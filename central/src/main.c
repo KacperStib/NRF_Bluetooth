@@ -57,9 +57,7 @@ static void print_ad_data(struct net_buf_simple *ad)
 
 		case BT_DATA_MANUFACTURER_DATA:
 		//jesli flaga sie zgadza to odczytaj
-		//adres = net_buf_simple_pull_u8(ad);
-		//len--;
-		if(adres == 6){
+		if(adres == 100)
             if (len >=  sizeof(uint32_t)) {
                 uint32_t msg;
                 memcpy(&msg, ad->data, sizeof(msg));
@@ -72,7 +70,6 @@ static void print_ad_data(struct net_buf_simple *ad)
                 len = 0;
             }
             break;
-		} else break;
         }
     }
 }
@@ -107,12 +104,14 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 		return;
 	}
 
+	if(adres == 100){
 	err = bt_conn_le_create(addr, BT_CONN_LE_CREATE_CONN,
 				BT_LE_CONN_PARAM_DEFAULT, &default_conn);
 	if (err) {
 		printk("Create conn to %s failed (%d)\n", addr_str, err);
 		start_scan();
 	}
+	}else start_scan();
 }
 
 static void start_scan(void)
@@ -134,7 +133,7 @@ static void connected(struct bt_conn *conn, uint8_t err)
 	flag = 1;
 	char addr[BT_ADDR_LE_STR_LEN];
 
-	if(adres == 6){
+	
 		bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
 
 		if (err) {
@@ -155,7 +154,7 @@ static void connected(struct bt_conn *conn, uint8_t err)
 		k_msleep(250);
 		//rozlaczenie jako potwierdzenie odebrania wiadomosci przez ADV
 		//bt_conn_disconnect(conn, BT_HCI_ERR_REMOTE_USER_TERM_CONN);
-	} 
+	
 	bt_conn_disconnect(conn, BT_HCI_ERR_REMOTE_USER_TERM_CONN);
 }
 
@@ -210,5 +209,6 @@ int main(void)
 	start_scan();
 	while(1)
 		blink();
+		k_sleep(K_MSEC(500));
 	return 0;
 }

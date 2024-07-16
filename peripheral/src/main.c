@@ -30,15 +30,13 @@
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 
-uint8_t id = 0;
 uint32_t msg = 10; // test
 
 uint64_t time_stamp = 0;
 
 // | 1 bajt flagi | 1 bajt id | 4 bajty wartosc |
 static const struct bt_data ad[] = {
-    BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-	BT_DATA(BT_DATA_MANUFACTURER_DATA, &id, sizeof(id)),
+    BT_DATA_BYTES(BT_DATA_FLAGS, 100),
     BT_DATA(BT_DATA_MANUFACTURER_DATA, &msg, sizeof(msg)),
 };
 
