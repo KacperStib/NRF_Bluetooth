@@ -26,11 +26,14 @@
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 bool flag = 0;
 
+uint8_t ctr = 0;
+
 static void start_scan(void);
 
 static struct bt_conn *default_conn;
 
 // Funkcja do wyświetlania danych reklamowych
+
 static void print_ad_data(struct net_buf_simple *ad)
 {
     while (ad->len > 1) {
@@ -46,9 +49,11 @@ static void print_ad_data(struct net_buf_simple *ad)
 
         switch (type) {
         case BT_DATA_FLAGS:
-            printk("  Flags: 0x%02x\n", net_buf_simple_pull_u8(ad));
+            //printk("  Flags: 0x%02x\n", net_buf_simple_pull_u8(ad));
+			uint8_t adres = net_buf_simple_pull_u8(ad);
             len--;
             break;
+		/*
         case BT_DATA_UUID16_SOME:
         case BT_DATA_UUID16_ALL:
             printk("  UUID16: ");
@@ -59,29 +64,34 @@ static void print_ad_data(struct net_buf_simple *ad)
             }
             printk("\n");
             break;
-        case BT_DATA_UUID128_SOME:
-        case BT_DATA_UUID128_ALL:
-            printk("  UUID128: ");
-            while (len >= 16) {
-                uint8_t uuid[16];
-                memcpy(uuid, net_buf_simple_pull(ad, 16), 16);
-                for (int i = 0; i < 16; i++) {
-                    printk("%02x", uuid[i]);
-                }
-                printk(" ");
-                len -= 16;
+		*/
+		case BT_DATA_MANUFACTURER_DATA:
+		if(adres == 6){
+            if (len >=  sizeof(uint32_t)) {
+                uint32_t msg;
+                memcpy(&msg, ad->data, sizeof(msg));
+				printk("  Manufacturer Data:\n Heartrate: %u\n", msg);
+                net_buf_simple_pull(ad, sizeof(msg));
+                len -= sizeof(msg);
+            } else {
+                printk("  Manufacturer Data: Insufficient length\n");
+                net_buf_simple_pull(ad, len);
+                len = 0;
             }
-            printk("\n");
             break;
+		}
+		/*
         case BT_DATA_NAME_SHORTENED:
         case BT_DATA_NAME_COMPLETE:
             printk("  Name: %.*s\n", len, (char *)ad->data);
             net_buf_simple_pull(ad, len);
             break;
+		
         default:
             printk("  Unknown AD type: 0x%02x, length: %u\n", type, len);
             net_buf_simple_pull(ad, len);
             break;
+		*/
         }
     }
 }
