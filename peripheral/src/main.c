@@ -26,18 +26,21 @@
 #include <zephyr/bluetooth/services/hrs.h>
 #include <zephyr/bluetooth/services/ias.h>
 
+#include "tsl.h"
+
 #define LED0_NODE DT_ALIAS(led0) //blink
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 
-uint32_t msg = 10; // test
+//uint32_t msg = 10; // test
 
 uint64_t time_stamp = 0;
 
-// | 1 bajt flagi | 1 bajt id | 4 bajty wartosc |
+uint32_t lux = 0;
+// | 1 bajt flagi | 4 bajty wartosc |
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, 100),
-    BT_DATA(BT_DATA_MANUFACTURER_DATA, &msg, sizeof(msg)),
+    BT_DATA(BT_DATA_MANUFACTURER_DATA, &lux, sizeof(lux)),
 };
 
 
@@ -100,7 +103,8 @@ static void adv_start(void)
 }
 
 int main(void)
-{
+{	
+	INITtsl();
 	//blink
 	gpio_is_ready_dt(&led);
 	gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
@@ -112,9 +116,11 @@ int main(void)
 		
 		blink();
 		//value to send
+		
 		if(k_uptime_get() - time_stamp >= 10000){
 			bt_start();
-			msg += 10;
+			//msg += 10;
+			lux = READlux();
 			time_stamp = k_uptime_get();
 			adv_start();
 		}

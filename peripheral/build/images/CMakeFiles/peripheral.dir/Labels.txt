@@ -1,0 +1,13 @@
+# Target labels
+ peripheral
+# Source files and their labels
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral-complete.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-build.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-configure.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-download.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-install.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-mkdir.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-patch.rule
+C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-update.rule

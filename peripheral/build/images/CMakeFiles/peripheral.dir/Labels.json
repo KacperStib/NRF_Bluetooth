@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/CMakeFiles/peripheral-complete.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-build.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-configure.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-download.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-install.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-mkdir.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-patch.rule"
+		},
+		{
+			"file" : "C:/ncs/v2.6.1/zephyr/samples/bluetooth/peripheral/build/images/peripheral-prefix/src/peripheral-stamp/peripheral-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"peripheral"
+		],
+		"name" : "peripheral"
+	}
+}
