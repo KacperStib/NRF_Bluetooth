@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/soc/common/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/soc/common/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/soc/soc/arm/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/soc/soc/arm/cmake_install.cmake")
 endif()
 

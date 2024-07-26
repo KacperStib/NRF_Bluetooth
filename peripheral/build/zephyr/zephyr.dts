@@ -134,6 +134,11 @@
 			pinctrl-0 = < &i2c0_default >;
 			pinctrl-1 = < &i2c0_sleep >;
 			pinctrl-names = "default", "sleep";
+			mysensor: mysensor@29 {
+				compatible = "i2c-device";
+				reg = < 0x29 >;
+				label = "MYSENSOR";
+			};
 		};
 		spi0: spi@40003000 {
 			compatible = "nordic,nrf-spi";
@@ -349,7 +354,7 @@
 			pinctrl-0 = < &pwm0_default >;
 			pinctrl-1 = < &pwm0_sleep >;
 			pinctrl-names = "default", "sleep";
-			phandle = < 0x16 >;
+			phandle = < 0x17 >;
 		};
 		pdm0: pdm@4001d000 {
 			compatible = "nordic,nrf-pdm";
@@ -510,7 +515,7 @@
 			status = "okay";
 			port = < 0x1 >;
 			gpiote-instance = < &gpiote >;
-			phandle = < 0x17 >;
+			phandle = < 0x16 >;
 		};
 	};
 	pinctrl: pin-controller {
@@ -667,11 +672,11 @@
 			label = "Green LED 1";
 		};
 		led2: led_2 {
-			gpios = < &gpio0 0xf 0x1 >;
+			gpios = < &gpio1 0x8 0x11 >;
 			label = "Green LED 2";
 		};
 		led3: led_3 {
-			gpios = < &gpio0 0x10 0x1 >;
+			gpios = < &gpio0 0x0 0x0 >;
 			label = "Green LED 3";
 		};
 	};

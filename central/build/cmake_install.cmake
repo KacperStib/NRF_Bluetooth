@@ -1,4 +1,4 @@
-# Install script for directory: C:/ncs/v2.6.1/zephyr/samples/bluetooth/central
+# Install script for directory: C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

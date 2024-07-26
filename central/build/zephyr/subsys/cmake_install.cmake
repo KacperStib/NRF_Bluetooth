@@ -39,111 +39,111 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/canbus/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/canbus/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/debug/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/debug/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/fb/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/fb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/fs/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/fs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/ipc/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/ipc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/logging/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/logging/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/mem_mgmt/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/mem_mgmt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/mgmt/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/mgmt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/modbus/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/modbus/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/pm/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/pm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/portability/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/portability/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/random/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/random/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/rtio/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/rtio/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/sd/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/sd/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/stats/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/stats/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/storage/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/storage/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/task_wdt/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/task_wdt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/testsuite/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/testsuite/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/tracing/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/tracing/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/usb/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/usb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/bluetooth/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/bluetooth/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/zephyr/subsys/net/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/zephyr/subsys/net/cmake_install.cmake")
 endif()
 

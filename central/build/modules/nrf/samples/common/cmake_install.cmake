@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/ncs/v2.6.1/zephyr/samples/bluetooth/central/build/modules/nrf/samples/common/mcumgr_bt_ota_dfu/cmake_install.cmake")
+  include("C:/Users/QLAB/Desktop/NRF/SimpleBLEConn/central/build/modules/nrf/samples/common/mcumgr_bt_ota_dfu/cmake_install.cmake")
 endif()
 

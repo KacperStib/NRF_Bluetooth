@@ -29,14 +29,19 @@
 #include "tsl.h"
 
 #define LED0_NODE DT_ALIAS(led0) //blink
+#define PIR1_NODE DT_ALIAS(led2) //pir
+
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+static const struct gpio_dt_spec pir = GPIO_DT_SPEC_GET(PIR1_NODE, gpios);
 
 //uint32_t msg = 10; // test
 
 uint64_t time_stamp = 0;
 
 uint32_t lux = 0;
+uint8_t movement = 1;
+
 // | 1 bajt flagi | 4 bajty wartosc |
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, 100),
@@ -47,7 +52,7 @@ static const struct bt_data ad[] = {
 static void blink(void){
 	if(flag == 0){
 		gpio_pin_toggle_dt(&led);
-		k_msleep(100);
+		//    k_msleep(100);
 	}
 	else{
 		gpio_pin_set_dt(&led,1);
@@ -108,6 +113,7 @@ int main(void)
 	//blink
 	gpio_is_ready_dt(&led);
 	gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
+	gpio_pin_configure_dt(&pir, GPIO_INPUT);
 
 	bt_start();
 	adv_start();
@@ -117,11 +123,20 @@ int main(void)
 		blink();
 		//value to send
 		
+		
 		if(k_uptime_get() - time_stamp >= 10000){
 			bt_start();
 			//msg += 10;
 			lux = READlux();
 			time_stamp = k_uptime_get();
+			adv_start();
+		}
+		
+		movement = gpio_pin_get_dt(&pir);
+
+		if(movement != 1){
+			lux = READlux();
+			bt_start();
 			adv_start();
 		}
 		k_sleep(K_MSEC(100));

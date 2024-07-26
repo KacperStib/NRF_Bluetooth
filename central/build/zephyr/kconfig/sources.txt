@@ -1,3 +1,7 @@
+C:\Users\QLAB\Desktop\NRF\SimpleBLEConn\central\build\Kconfig\Kconfig.dts
+C:\Users\QLAB\Desktop\NRF\SimpleBLEConn\central\build\Kconfig\Kconfig.modules
+C:\Users\QLAB\Desktop\NRF\SimpleBLEConn\central\build\Kconfig\Kconfig.shield
+C:\Users\QLAB\Desktop\NRF\SimpleBLEConn\central\build\Kconfig\Kconfig.shield.defconfig
 C:\ncs\toolchains\ce3b5ff664\opt\zephyr-sdk\cmake\zephyr\Kconfig
 C:\ncs\v2.6.1\modules\hal\cirrus-logic\Kconfig
 C:\ncs\v2.6.1\modules\lib\chre\platform\zephyr\Kconfig
@@ -1616,10 +1620,6 @@ C:\ncs\v2.6.1\zephyr\modules\trusted-firmware-m\Kconfig.tfm.crypto_modules
 C:\ncs\v2.6.1\zephyr\modules\trusted-firmware-m\Kconfig.tfm.partitions
 C:\ncs\v2.6.1\zephyr\modules\uoscore-uedhoc\Kconfig
 C:\ncs\v2.6.1\zephyr\modules\zcbor\Kconfig
-C:\ncs\v2.6.1\zephyr\samples\bluetooth\central\build\Kconfig\Kconfig.dts
-C:\ncs\v2.6.1\zephyr\samples\bluetooth\central\build\Kconfig\Kconfig.modules
-C:\ncs\v2.6.1\zephyr\samples\bluetooth\central\build\Kconfig\Kconfig.shield
-C:\ncs\v2.6.1\zephyr\samples\bluetooth\central\build\Kconfig\Kconfig.shield.defconfig
 C:\ncs\v2.6.1\zephyr\soc\Kconfig
 C:\ncs\v2.6.1\zephyr\soc\arm\Kconfig
 C:\ncs\v2.6.1\zephyr\soc\arm\ambiq\Kconfig

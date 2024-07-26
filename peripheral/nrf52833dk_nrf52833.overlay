@@ -11,10 +11,40 @@
 // For more help, browse the DeviceTree documentation at https://docs.zephyrproject.org/latest/guides/dts/index.html
 // You can also visit the nRF DeviceTree extension documentation at https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/guides/ncs_configure_app.html#devicetree-support-in-the-extension
 
-&i2c0 {
-    mysensor: mysensor@29{
-        compatible = "i2c-device";
-        reg = < 0x29 >;
-        label = "MYSENSOR";
+    &i2c0 {
+        mysensor: mysensor@29{
+            compatible = "i2c-device";
+            reg = < 0x29 >;
+            label = "MYSENSOR";
+        };
     };
-};
+
+    /{
+   
+        leds {
+            led0: led_0 {
+                gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+                label = "Green LED 0";
+            };
+            led1: led_1 {
+                gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+                label = "Green LED 1";
+            };
+            led2: led_2 {
+                gpios = <&gpio1 8 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                label = "Green LED 2";
+            };
+            led3: led_3 {
+                gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+                label = "Green LED 3";
+            };
+        };
+        
+        aliases {
+            led0 = &led0;
+            led1 = &led1;
+            led2 = &led2;
+            led3 = &led3;     
+        };
+    };
+    

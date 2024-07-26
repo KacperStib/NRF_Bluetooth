@@ -1026,6 +1026,7 @@
   watchdog0 = &wdt0;
   spi-flash0 = &mx25r64;
  };
+
 };
 
 &adc {
@@ -1179,7 +1180,7 @@ arduino_spi: &spi3 {
    label = "image-1";
    reg = <0x00082000 0x00076000>;
   };
-# 299 "C:/ncs/v2.6.1/zephyr/boards/arm/nrf52840dk_nrf52840/nrf52840dk_nrf52840.dts"
+# 300 "C:/ncs/v2.6.1/zephyr/boards/arm/nrf52840dk_nrf52840/nrf52840dk_nrf52840.dts"
   storage_partition: partition@f8000 {
    label = "storage";
    reg = <0x000f8000 0x00008000>;

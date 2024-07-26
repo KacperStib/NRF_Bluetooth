@@ -34,7 +34,7 @@ static struct bt_conn *default_conn;
 
 // Funkcja do wyświetlania danych reklamowych
 
-static void print_ad_data(struct net_buf_simple *ad)
+static void ad_data(struct net_buf_simple *ad)
 {
     while (ad->len > 1) {
         uint8_t len = net_buf_simple_pull_u8(ad);
@@ -64,13 +64,20 @@ static void print_ad_data(struct net_buf_simple *ad)
 				printk("Wartosc: %u\n", msg);
                 net_buf_simple_pull(ad, sizeof(msg));
                 len -= sizeof(msg);
-            } else {
+            } else if (len >=  sizeof(uint8_t)){
+				uint8_t pir = 1;
+				memcpy(&pir, ad->data, sizeof(pir));
+				printk("WartoscPIR: %u\n", pir);
+                net_buf_simple_pull(ad, sizeof(pir));
+                len -= sizeof(pir);
+			}
+			else {
                 printk("Insufficient length\n");
                 net_buf_simple_pull(ad, len);
                 len = 0;
             }
+		}
             break;
-        }
     }
 }
 
@@ -93,7 +100,7 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 	bt_addr_le_to_str(addr, addr_str, sizeof(addr_str));
 	//printk("Device found: %s (RSSI %d)\n", addr_str, rssi);
 
-	print_ad_data(ad);
+	ad_data(ad);
 
 	/* connect only to devices in close proximity */
 	if (rssi < -50) {
@@ -107,11 +114,11 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 	if(adres == 100){
 	err = bt_conn_le_create(addr, BT_CONN_LE_CREATE_CONN,
 				BT_LE_CONN_PARAM_DEFAULT, &default_conn);
-	if (err) {
-		printk("Create conn to %s failed (%d)\n", addr_str, err);
-		start_scan();
-	}
-	}else start_scan();
+		if (err) {
+			printk("Create conn to %s failed (%d)\n", addr_str, err);
+			start_scan();
+		}
+	}	else start_scan();
 }
 
 static void start_scan(void)
