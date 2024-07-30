@@ -29,7 +29,7 @@
 #include "tsl.h"
 
 #define LED0_NODE DT_ALIAS(led0) //blink
-#define PIR1_NODE DT_ALIAS(led2) //pir
+#define PIR1_NODE DT_ALIAS(led3) //pir
 
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
@@ -54,7 +54,8 @@ static const struct bt_data ad[] = {
 
 static void blink(void){
 	if(flag == 0){
-		gpio_pin_toggle_dt(&led);
+		//gpio_pin_toggle_dt(&led);
+		gpio_pin_set_dt(&led,0);
 		//    k_msleep(100);
 	}
 	else{
@@ -68,14 +69,14 @@ static void connected(struct bt_conn *conn, uint8_t err)
 		printk("Connection failed (err 0x%02x)\n", err);
 	} else {
 		printk("Connected\n");
-		flag = 1;
+		//flag = 1;
 		bt_le_adv_stop();
 	}
 }
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
 	printk("Disconnected (reason 0x%02x)\n", reason);
-	flag = 0;
+	//flag = 0;
 	time_stamp = k_uptime_get();
 	int disc = bt_disable();
 }
@@ -125,23 +126,19 @@ int main(void)
 		
 		blink();
 		//value to send
-		
-		
-		if(k_uptime_get() - time_stamp >= 10000){
-			bt_start();
-			//msg += 10;
-			lux = READlux();
-
-			msg[1] = lux;
-			
-			time_stamp = k_uptime_get();
-			adv_start();
-		}
-		
 		movement = gpio_pin_get_dt(&pir);
 		msg[2] = movement;
+		flag = movement;
 
-		if(movement != 1){
+		if(k_uptime_get() - time_stamp >= 10000){
+			bt_start();
+
+			lux = READlux();
+			msg[1] = lux;
+			adv_start();
+		}
+
+		if(movement == 0){
 			lux = READlux();
 			
 			msg[1] = lux;

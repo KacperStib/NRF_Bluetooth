@@ -672,11 +672,11 @@
 			label = "Green LED 1";
 		};
 		led2: led_2 {
-			gpios = < &gpio1 0x8 0x11 >;
+			gpios = < &gpio0 0x0 0x0 >;
 			label = "Green LED 2";
 		};
 		led3: led_3 {
-			gpios = < &gpio0 0x0 0x0 >;
+			gpios = < &gpio1 0x8 0x11 >;
 			label = "Green LED 3";
 		};
 	};
