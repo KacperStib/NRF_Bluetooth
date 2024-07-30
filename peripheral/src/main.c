@@ -42,10 +42,13 @@ uint64_t time_stamp = 0;
 uint32_t lux = 0;
 uint8_t movement = 1;
 
+// ID | LUX | PIR
+uint32_t msg [] = {0, 10, 1};
+
 // | 1 bajt flagi | 4 bajty wartosc |
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, 100),
-    BT_DATA(BT_DATA_MANUFACTURER_DATA, &lux, sizeof(lux)),
+    BT_DATA(BT_DATA_MANUFACTURER_DATA, &msg, sizeof(msg)),
 };
 
 
@@ -128,14 +131,20 @@ int main(void)
 			bt_start();
 			//msg += 10;
 			lux = READlux();
+
+			msg[1] = lux;
+			
 			time_stamp = k_uptime_get();
 			adv_start();
 		}
 		
 		movement = gpio_pin_get_dt(&pir);
+		msg[2] = movement;
 
 		if(movement != 1){
 			lux = READlux();
+			
+			msg[1] = lux;
 			bt_start();
 			adv_start();
 		}

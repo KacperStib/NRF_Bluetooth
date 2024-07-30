@@ -28,6 +28,8 @@ bool flag = 0;
 
 uint8_t adres = 0;
 
+uint32_t msg[] = {0, 0, 0};
+
 static void start_scan(void);
 
 static struct bt_conn *default_conn;
@@ -48,36 +50,48 @@ static void ad_data(struct net_buf_simple *ad)
         len--;
 
         switch (type) {
-
         case BT_DATA_FLAGS:
-            //printk("  Flags: 0x%02x\n", net_buf_simple_pull_u8(ad));
-			adres = net_buf_simple_pull_u8(ad);
+            adres = net_buf_simple_pull_u8(ad);
             len--;
             break;
 
-		case BT_DATA_MANUFACTURER_DATA:
-		//jesli flaga sie zgadza to odczytaj
-		if(adres == 100)
-            if (len >=  sizeof(uint32_t)) {
-                uint32_t msg;
-                memcpy(&msg, ad->data, sizeof(msg));
-				printk("Wartosc: %u\n", msg);
-                net_buf_simple_pull(ad, sizeof(msg));
-                len -= sizeof(msg);
-            } else if (len >=  sizeof(uint8_t)){
-				uint8_t pir = 1;
-				memcpy(&pir, ad->data, sizeof(pir));
-				printk("WartoscPIR: %u\n", pir);
-                net_buf_simple_pull(ad, sizeof(pir));
-                len -= sizeof(pir);
-			}
-			else {
-                printk("Insufficient length\n");
-                net_buf_simple_pull(ad, len);
-                len = 0;
+        case BT_DATA_MANUFACTURER_DATA:
+            if (adres == 100) {
+                if (len >= sizeof(msg)) {
+                    uint32_t received_msg[sizeof(msg) / sizeof(uint32_t)];
+                    memcpy(received_msg, ad->data, sizeof(received_msg));
+
+					printk("ID czujnika: %u \n", received_msg[0]);
+					printk("Natezenie swiatla: %u \n", received_msg[1]);
+					
+					if(received_msg[2] == 0){
+						printk("Wykryto ruch !\n");
+					}	else{
+						printk("Brak obecnosci !\n");
+					}
+				    /*
+					printk("Wartosc: ");
+                    for (size_t i = 0; i < sizeof(received_msg) / sizeof(uint32_t); i++) {
+                        printk("%u ", received_msg[i]);
+                    }
+                    printk("\n");
+					*/
+
+                    net_buf_simple_pull(ad, sizeof(received_msg));
+                    len -= sizeof(received_msg);
+                } else {
+                    printk("Insufficient length\n");
+                    net_buf_simple_pull(ad, len);
+                    len = 0;
+                }
             }
-		}
             break;
+
+        default:
+            net_buf_simple_pull(ad, len);
+            len = 0;
+            break;
+        }
     }
 }
 
