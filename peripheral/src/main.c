@@ -29,7 +29,7 @@
 #include "tsl.h"
 
 #define LED0_NODE DT_ALIAS(led0) //blink
-#define PIR1_NODE DT_ALIAS(led3) //pir
+#define PIR1_NODE DT_ALIAS(pir) //pir
 
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
@@ -39,13 +39,14 @@ static const struct gpio_dt_spec pir = GPIO_DT_SPEC_GET(PIR1_NODE, gpios);
 
 uint64_t time_stamp = 0;
 
+const uint32_t id = 0;
 uint32_t lux = 0;
 uint8_t movement = 1;
 
 // ID | LUX | PIR
-uint32_t msg [] = {0, 10, 1};
+uint32_t msg [] = {id, 0, 1};
 
-// | 1 bajt flagi | 4 bajty wartosc |
+// | 1 bajt flagi | 4 bajty ID | 4 bajty LUX | 4 bajty PIR |
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, 100),
     BT_DATA(BT_DATA_MANUFACTURER_DATA, &msg, sizeof(msg)),
@@ -146,6 +147,7 @@ int main(void)
 			adv_start();
 		}
 		k_sleep(K_MSEC(100));
+		//pm_state_force(0, &(struct pm_state_info){PM_STATE_SUSPEND_TO_IDLE, 0, 0});
 	}
 	return 0;
 }
