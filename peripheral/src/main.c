@@ -33,21 +33,21 @@
 
 bool flag = 0; //blink flag
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
-static const struct gpio_dt_spec pir = GPIO_DT_SPEC_GET(PIR1_NODE, gpios);
+static const struct gpio_dt_spec pir = GPIO_DT_SPEC_GET_OR(PIR1_NODE, gpios, {0});
 
 //uint32_t msg = 10; // test
 
 uint64_t time_stamp = 0;
 
 const uint32_t id = 0;
-uint32_t lux = 0;
-uint8_t movement = 1;
+volatile uint32_t lux = 0;
+volatile uint8_t movement = 1;
 
 // ID | LUX | PIR
-uint32_t msg [] = {id, 0, 1};
+volatile uint32_t msg [] = {id, 0, 0};
 
 // | 1 bajt flagi | 4 bajty ID | 4 bajty LUX | 4 bajty PIR |
-static const struct bt_data ad[] = {
+static struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, 100),
     BT_DATA(BT_DATA_MANUFACTURER_DATA, &msg, sizeof(msg)),
 };
@@ -112,13 +112,32 @@ static void adv_start(void)
 	printk("Advertising successfully started\n");
 }
 
+static struct gpio_callback pin_cb_data;
+
+void pin_isr(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
+{	
+	bt_le_adv_stop();
+	bt_start();
+	lux = READlux();		
+	msg[1] = lux;		
+	adv_start();
+}
+
+static void pin_cfg(void){
+	gpio_is_ready_dt(&led);
+	gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
+	gpio_pin_configure_dt(&pir, GPIO_INPUT);
+	gpio_pin_interrupt_configure_dt(&pir, GPIO_INT_EDGE_TO_INACTIVE);
+	gpio_init_callback(&pin_cb_data, pin_isr, BIT(pir.pin));
+	gpio_add_callback(pir.port, &pin_cb_data);
+}
+
 int main(void)
 {	
 	INITtsl();
 	//blink
-	gpio_is_ready_dt(&led);
-	gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
-	gpio_pin_configure_dt(&pir, GPIO_INPUT);
+	
+	pin_cfg();
 
 	bt_start();
 	adv_start();
@@ -133,20 +152,21 @@ int main(void)
 
 		if(k_uptime_get() - time_stamp >= 10000){
 			bt_start();
-
 			lux = READlux();
 			msg[1] = lux;
 			adv_start();
 		}
 
+		/*
 		if(movement == 0){
-			lux = READlux();
-			
-			msg[1] = lux;
 			bt_start();
+			lux = READlux();		
+			msg[1] = lux;		
 			adv_start();
 		}
-		k_sleep(K_MSEC(100));
+		*/
+		
+		k_sleep(K_MSEC(5000));
 		//pm_state_force(0, &(struct pm_state_info){PM_STATE_SUSPEND_TO_IDLE, 0, 0});
 	}
 	return 0;
