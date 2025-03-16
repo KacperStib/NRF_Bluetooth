@@ -1,2 +1,4 @@
 # Bluetooth advertisment between two NRF52840 devices.
-Slightly modified NRF's examples to send advertisments (expostion of one of the devices) to every bluetooth signal receiving device and to receive and read the advertisment by other device.
+Slightly modified NRF's examples.
+First device (perihepial) is sending info from lux and pir sensor to all bluetooth signal receiving devices via advertisment.
+Second device (central) is receiving advertisment and reading sensors values.
